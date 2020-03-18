@@ -15,12 +15,19 @@ namespace DefaultNamespace
         {
             //sprites are unique, rects can collide, don't want to worry about semantics
             SortedDictionary<Sprite,Rect> spriteBoundsDictionary = new SortedDictionary<Sprite, Rect>(); //likely can be eliminated
+            List<Sprite> spritesToSort = new List<Sprite>(toPack);
             foreach (var sprite in toPack)
             {
                 if (sprite == null) continue; //handle bad editor data
                 spriteBoundsDictionary.Add(sprite,sprite.rect);
             }
             //spriteBoundsDictionary
+            
+            spritesToSort.Sort(new SpriteWidthComparer());
+            foreach (var sprite in spritesToSort)
+            {
+                Debug.Log($" sprite name  {sprite.name} width {sprite.rect.width}");
+            }
         }
 
         public class SpriteAreaComparer : IComparer<Sprite>
@@ -67,11 +74,6 @@ namespace DefaultNamespace
                 if (x.GetHashCode() == y.GetHashCode()) return 0;
                 return x.GetHashCode() < y.GetHashCode() ? -1 : 1;
             }
-
-            private float AreaOfSprite(Sprite sprite)
-            {
-                return sprite.textureRect.width * sprite.textureRect.height;
-            }
         }
 
         public RectSprite SettingsForImage(string spriteNameToSet)
@@ -87,7 +89,8 @@ namespace DefaultNamespace
     [Serializable]
     public class RectSprite
     {
-        public RectAtlasPaged Atlas; //reference atlas - design choice unity makes, cribbing off that
+        //removed currently due to circular ref causing serialzation depth to blow up. 
+        //public RectAtlasPaged Atlas; //reference atlas - design choice unity makes, cribbing off that  Useful if you want a hidden editor asset controlling concrete sprites
         public Texture2D Tex;
         public string SpriteName;
         public Vector2 Offset;

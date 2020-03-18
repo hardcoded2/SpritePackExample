@@ -16,6 +16,13 @@ namespace DefaultNamespace
             return mat;
         }
         [SerializeField] private string m_SpriteNameToSet;
+
+        [ContextMenu("Test Generate")]
+        public void TestGen()
+        {
+            m_RectAtlas.Generate(m_TestSpritesToAtlas);
+        }
+
         [ContextMenu("TestApply")]
         public void TestApply()
         {
