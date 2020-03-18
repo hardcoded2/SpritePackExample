@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Object = UnityEngine.Object;
 
 namespace Tests
 {
@@ -10,7 +12,7 @@ namespace Tests
     {
         // A Test behaves as an ordinary method
         [Test]
-        public void EditSimplePasses()
+        public void TestSimpleAtlasSplit()
         {
             // Use the Assert class to test conditions
             var atlasInfo = new SimpleAtlas.AtlasInfo()
@@ -36,7 +38,32 @@ namespace Tests
             
             Assert.AreEqual(new Vector2(0.875f,0f), atlasInfo.SettingsForImage(new Vector2Int(7, 7)).Offset);
         }
-
+        [Test]
+        public void TestApplySettings()
+        {
+            var textureSettings = new SimpleAtlas.TextureSettings()
+            {
+                Offset = new Vector2(0,0.875f),
+                Tiling = new Vector2(0.125f,0.125f )
+            };
+            
+            Material tmpMat = new Material(Shader.Find("Unlit/Texture"));
+            try
+            {
+                textureSettings.Apply(tmpMat);
+                Assert.AreEqual(textureSettings.Offset,tmpMat.mainTextureOffset);
+                Assert.AreEqual(textureSettings.Tiling,tmpMat.mainTextureScale);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Exception {e.Message} stack {e.StackTrace}");
+            }
+            finally
+            {
+                Object.DestroyImmediate(tmpMat);
+            }
+        }
+        
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
