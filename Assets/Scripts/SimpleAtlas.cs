@@ -43,15 +43,18 @@ public class SimpleAtlas : MonoBehaviour
         }
     }
 
+    [SerializeField] private Vector2Int m_ImageToPick;
+
     [SerializeField] private AtlasInfo m_AtlasInfo;
 
-    [Range(0,7)]
-    [SerializeField] private Vector2Int m_ImageToPick;
 
     [ContextMenu("TestApply")]
     public void TestApply()
     {
         var settings = m_AtlasInfo.SettingsForImage(m_ImageToPick);
-        settings.Apply(GetComponent<Renderer>().material);
+        var renderer = GetComponent<Renderer>();
+        Material mat = null;
+        mat = !Application.isPlaying ? renderer.sharedMaterial : renderer.material;
+        settings.Apply(mat);
     }
 }
