@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.atteneder.ktx": "https://gitlab.com/atteneder/ktxunity.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "3.0.7",
     "com.unity.2d.tilemap": "1.0.0",
@@ -45,5 +46,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.atteneder.ktx": {
+      "revision": "HEAD",
+      "hash": "7c3538efac14cf12dbee3b72491859bfe710b30a"
+    }
   }
 }
