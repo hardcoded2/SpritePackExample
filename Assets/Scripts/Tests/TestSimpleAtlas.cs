@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Tests
 {
@@ -21,7 +23,9 @@ namespace Tests
             var settingsForImage = atlasInfo.SettingsForImage(new Vector2Int(0, 0));
             Assert.AreEqual(new Vector2(0.125f,0.125f ),settingsForImage.Tiling);
             Assert.AreEqual(new Vector2(0,0.875f), settingsForImage.Offset);
-    }
+        }
+
+        
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.

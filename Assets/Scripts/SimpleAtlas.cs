@@ -35,6 +35,12 @@ public class SimpleAtlas : MonoBehaviour
     {
         public Vector2 Offset;
         public Vector2 Tiling;
+
+        public void Apply(Material material)
+        {
+            material.mainTextureOffset = Offset;
+            material.mainTextureScale = Tiling;
+        }
     }
 
     [SerializeField] private AtlasInfo m_AtlasInfo;
