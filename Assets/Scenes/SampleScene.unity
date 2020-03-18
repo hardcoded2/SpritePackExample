@@ -487,7 +487,7 @@ MonoBehaviour:
   - {fileID: 6918750291706745354, guid: f8c6d6dd85e330341a9245bb42c4ed8f, type: 3}
   - {fileID: 6726265856352273883, guid: f8c6d6dd85e330341a9245bb42c4ed8f, type: 3}
   m_RectAtlas:
-    Tex: []
+    Tex: {fileID: 0}
     RectSprites: []
   m_SpriteNameToSet: 
 --- !u!23 &1178582558

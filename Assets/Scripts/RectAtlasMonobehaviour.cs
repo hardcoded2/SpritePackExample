@@ -7,7 +7,7 @@ namespace DefaultNamespace
     {
         //TODO: make sure that these sprites are only in editor, ie use .userdata assetimporter (gets saved in .meta). or odin serialization
         [SerializeField] private List<Sprite> m_TestSpritesToAtlas;
-        [SerializeField] private RectAtlasPaged m_RectAtlas;
+        [SerializeField] private RectAtlas m_RectAtlas;
 
         private Material GetMaterialSafe()
         {
