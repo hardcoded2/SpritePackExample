@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class SimpleAtlas : MonoBehaviour
+public class SimpleAtlasTest : MonoBehaviour
 {
     //evenly packed assumed
     [Serializable]

@@ -15,7 +15,7 @@ namespace Tests
         public void TestSimpleAtlasSplit()
         {
             // Use the Assert class to test conditions
-            var atlasInfo = new SimpleAtlas.AtlasInfo()
+            var atlasInfo = new SimpleAtlasTest.AtlasInfo()
             {
                 Tex = new Texture2D(400,400),SpriteSizeInPixels = 50f * Vector2.one
             };
@@ -41,7 +41,7 @@ namespace Tests
         [Test]
         public void TestApplySettings()
         {
-            var textureSettings = new SimpleAtlas.TextureSettings()
+            var textureSettings = new SimpleAtlasTest.TextureSettings()
             {
                 Offset = new Vector2(0,0.875f),
                 Tiling = new Vector2(0.125f,0.125f )
