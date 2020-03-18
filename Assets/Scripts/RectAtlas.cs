@@ -14,7 +14,7 @@ namespace DefaultNamespace
         public void Generate(List<Sprite> toPack)
         {
             //sprites are unique, rects can collide, don't want to worry about semantics
-            SortedDictionary<Sprite,Rect> spriteBoundsDictionary = new SortedDictionary<Sprite, Rect>(); //likely can be eliminated
+            Dictionary<Sprite,Rect> spriteBoundsDictionary = new Dictionary<Sprite, Rect>(); //likely can be eliminated
             List<Sprite> spritesToSort = new List<Sprite>(toPack);
             foreach (var sprite in toPack)
             {
